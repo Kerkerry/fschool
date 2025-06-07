@@ -8,4 +8,5 @@ abstract class StudentRemoteDatasource{
   Future<List<Student>> getStudents();
   Future<void> updateStudent({required Student student});
   Future<void> deleteStudent({required int id});
+  Future<bool> loginStudent({required CreateStudentParams student});
 }

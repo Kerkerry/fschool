@@ -9,4 +9,5 @@ abstract class StudentRepository{
   ResultFuture<Student> getStudent({required int id});
   ResulVoid updateStudent({required Student student});
   ResulVoid deleteStudent({required int id});
+  ResultFuture<bool> loginStudent({required CreateStudentParams student});
 }

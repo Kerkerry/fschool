@@ -60,4 +60,10 @@ class StudentRepositoryImplementation implements StudentRepository{
       return left(ApiFailure.fromException(e));
     }
   }
+
+  @override
+  ResultFuture<bool> loginStudent({required CreateStudentParams student}) async{
+    // TODO: implement loginStudent
+    throw UnimplementedError();
+  }
 }

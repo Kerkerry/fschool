@@ -19,7 +19,7 @@ class StudentDatasourceImplementation implements StudentRemoteDatasource{
             body:jsonEncode(
               {
                 'username':student.username,
-                'password_hash':student.password,
+                'password':student.password,
                 'role':student.role,
                 'email':student.email,
                 'first_name':student.firstName,
@@ -31,6 +31,7 @@ class StudentDatasourceImplementation implements StudentRemoteDatasource{
         if(response.statusCode!=200){
           throw(ApiException(statusCode: response.statusCode,message: response.body));
         }
+        logger.d(response.body);
       }
       on ApiException{
         rethrow;
@@ -47,6 +48,7 @@ class StudentDatasourceImplementation implements StudentRemoteDatasource{
       if(response.statusCode!=200){
         throw(ApiException(statusCode: response.statusCode,message: response.body));
       }
+      logger.d(response.body);
     }on ApiException{
       rethrow;
     }
@@ -112,6 +114,37 @@ class StudentDatasourceImplementation implements StudentRemoteDatasource{
       if(response.statusCode!=200){
         throw(ApiException(statusCode: response.statusCode,message: response.body));
       }
+    }
+    on ApiException{
+      rethrow;
+    }
+    catch (e){
+      throw(ApiException(statusCode: 500,message: e.toString()));
+    }
+  }
+
+  @override
+  Future<bool> loginStudent({required CreateStudentParams student})async {
+    try{
+      final response=await http.post(
+          Uri.https(kBaseUrl,loginStudentEndpoint),
+          body:jsonEncode(
+              {
+                'username':student.username,
+                'password':student.password,
+                'role':student.role,
+                'email':student.email,
+                'first_name':student.firstName,
+                'last_name':student.lastName
+              }
+          ),
+          headers: {'Content-Type':'application/json'}
+      );
+      if(response.statusCode!=200){
+        throw(ApiException(statusCode: response.statusCode,message: response.body));
+      }
+      logger.d(response.body);
+      return true;
     }
     on ApiException{
       rethrow;

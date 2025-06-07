@@ -144,7 +144,8 @@ class StudentDatasourceImplementation implements StudentRemoteDatasource{
         throw(ApiException(statusCode: response.statusCode,message: response.body));
       }
       logger.d(response.body);
-      return true;
+      final  loginResponse=jsonDecode(response.body);
+      return loginResponse['login'];
     }
     on ApiException{
       rethrow;

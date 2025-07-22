@@ -1,0 +1,33 @@
+# graphql/schema.graphql
+enum UserRole {
+    ADMIN
+    STUDENT
+    TEACHER
+    GUEST
+}
+
+input CreateUserInput {
+    username: String!
+    email: String!
+    role: UserRole!
+    firstName: String!
+    lastName: String!
+    password: String!
+}
+
+type User {
+    id: ID!
+    username: String!
+    email: String!
+    role: UserRole!
+    firstName: String!
+    lastName: String!
+}
+
+type Query {
+    users: [User!]!
+}
+
+type Mutation {
+    createUser(input: CreateUserInput!): User!
+}

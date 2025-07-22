@@ -1,0 +1,21 @@
+# lib/graphql/mutations.graphql
+mutation AddUser($username:String!,$email:String!,$role:UserRole!,$firstName:String!,$lastName:String!,$password:String!){
+    createUser(input:{
+        username:$username,
+        email:$email,
+        role:$role,
+        firstName:$firstName,
+        lastName:$lastName,
+        password:$password
+        }){
+            userId
+            username
+            email
+            firstName
+            lastName
+            role
+            password
+            lastLogin
+            createAt
+    }
+}

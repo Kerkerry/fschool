@@ -3,7 +3,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 
 class GraphQLConfig {
   static HttpLink httpLink = HttpLink(
-    'https://e5521875ebdb.ngrok-free.app/graphql', // Replace with your GraphQL server URL
+    'https://5806cf7bf113.ngrok-free.app/graphql', // Replace with your GraphQL server URL
   );
 
   static WebSocketLink websocketLink = WebSocketLink(
